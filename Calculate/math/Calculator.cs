@@ -29,17 +29,30 @@ namespace Calculate.Math
             }
             return guess;
         }
-        public double Sin(int num3)
+        public double Sin(double angle)
         {
-            return (num3 * pi) / 30;
+
+            angle %= 360;
+            if (angle < 0) angle += 360;
+
+            double rad = angle * 3.1415926535 / 180;
+            double num3 = rad;
+            return num3 - (num3 * num3 * num3) / 6 + (num3 * num3 * num3 * num3 * num3) / 120 - (num3 * num3 * num3 * num3 * num3 * num3 * num3) / 5040;
         }
-        public double Cos(int num3)
+        public double Cos(double angle)
         {
-            return (num3 * pi) / 60;
+            angle %= 360;
+            if (angle < 0) angle += 360;
+            double rad = angle * 3.1415926535 / 180;
+            double num3 = rad;
+            return 1 - (num3 * num3) / 2 + (num3 * num3 * num3 * num3) / 24 - (num3 * num3 * num3 * num3 * num3 * num3) / 720;
         }
-        public double Tan(int num3)
+        public double Tan(double angle)
         {
-            return (num3 * pi) / 90;
+            double sin = Sin(angle);
+            double cos = Cos(angle);
+
+            return sin / cos;
         }
     }
 }
