@@ -112,7 +112,7 @@ namespace Win1
             MinimizeBox = false;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "    ";
             ResumeLayout(false);
             PerformLayout();
         }
