@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Devices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,56 +17,42 @@ namespace Win1
         {
             InitializeComponent();
         }
-
-        private class PointArray
-        {
-            private int index = 0;
-            private Point[] points;
-            public PointArray(int size)
-            {
-                if (size <= 0) { size = 2; }
-                points = new Point[size];
-
-            }
-            public void SetPoint(int x, int y)
-            {
-                if (index >= points.Length)
-                {
-                    index = 0;
-                }
-                else
-                {
-                    points[index] = new Point(x, y);
-                    index++;
-                }
-            }
-            public void Reset()
-            {
-                index = 0;
-            }
-            public int CountPoint()
-            {
-                return index;
-            }
-            public Point[] GetPoints()
-            {
-                return points;
-
-            }
-        }
-        private bool ClampingMouse = false;
-        Bitmap bitmap = new Bitmap(100, 100);
-        Graphics graphics;
-        Pen pen = new Pen(Color.Black, 3f);
-
+        public bool Mouse = false;
+        Pen pen = new Pen(Color.Black, 2);
+        Point _startPoint = new Point();
+        Point _endPoint = new Point();
         private void whitebtn_Click(object sender, EventArgs e)
         {
-            pen.Color = Color.White;
+            pen.Color = Color.;
+        }
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
-        private void blackbtn_Click(object sender, EventArgs e)
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            pen.Color= Color.Black;
+            Mouse = false;
+            Xlblb.Text = e.X.ToString();
+            Ylblb.Text = e.Y.ToString();
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            Mouse = true;
+            Xlblbl.Text = e.X.ToString();
+            Ylblbl.Text = e.Y.ToString();
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            XLbl.Text = e.X.ToString();
+            YLbl.Text = e.Y.ToString();
+        }
+
+        private void FormPaint_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
